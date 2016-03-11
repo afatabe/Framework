@@ -34,12 +34,8 @@
             this.txtTelefone = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.grdContatos = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDeletar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.grdContatos)).BeginInit();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // listBox1
@@ -47,10 +43,11 @@
             this.listBox1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 14;
-            this.listBox1.Location = new System.Drawing.Point(284, 18);
+            this.listBox1.Location = new System.Drawing.Point(196, 11);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(144, 130);
+            this.listBox1.Size = new System.Drawing.Size(290, 340);
             this.listBox1.TabIndex = 13;
+            this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
             // 
             // label2
             // 
@@ -94,37 +91,9 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // grdContatos
-            // 
-            this.grdContatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdContatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.Nome,
-            this.Telefone});
-            this.grdContatos.Location = new System.Drawing.Point(12, 174);
-            this.grdContatos.Name = "grdContatos";
-            this.grdContatos.Size = new System.Drawing.Size(415, 160);
-            this.grdContatos.TabIndex = 14;
-            this.grdContatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdContatos_CellContentClick);
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            // 
-            // Nome
-            // 
-            this.Nome.HeaderText = "Nome";
-            this.Nome.Name = "Nome";
-            // 
-            // Telefone
-            // 
-            this.Telefone.HeaderText = "Telefone";
-            this.Telefone.Name = "Telefone";
-            // 
             // btnDeletar
             // 
-            this.btnDeletar.Location = new System.Drawing.Point(12, 145);
+            this.btnDeletar.Location = new System.Drawing.Point(326, 357);
             this.btnDeletar.Name = "btnDeletar";
             this.btnDeletar.Size = new System.Drawing.Size(160, 23);
             this.btnDeletar.TabIndex = 15;
@@ -132,13 +101,16 @@
             this.btnDeletar.UseVisualStyleBackColor = true;
             this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 354);
+            this.ClientSize = new System.Drawing.Size(508, 492);
             this.Controls.Add(this.btnDeletar);
-            this.Controls.Add(this.grdContatos);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -148,7 +120,6 @@
             this.Name = "Form3";
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.Form3_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.grdContatos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,10 +133,7 @@
         private Windows.Forms.TextBox txtTelefone;
         private Windows.Forms.TextBox txtNome;
         private Windows.Forms.Button button1;
-        private Windows.Forms.DataGridView grdContatos;
-        private Windows.Forms.DataGridViewTextBoxColumn Id;
-        private Windows.Forms.DataGridViewTextBoxColumn Nome;
-        private Windows.Forms.DataGridViewTextBoxColumn Telefone;
         private Windows.Forms.Button btnDeletar;
+        private Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

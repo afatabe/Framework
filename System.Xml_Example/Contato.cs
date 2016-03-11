@@ -11,10 +11,10 @@ namespace System.Xml_Example
     public class Contato
     {
         [XmlElement("Id")]
-        public int Id;
+        public int Id { get; set; }
         [XmlElement("Nome")]
-        public string Nome;
+        public string Nome { get; set; }
         [XmlElement("Telefone")]
-        public string Telefone;
+        public string Telefone { get; set; }
     }
 }

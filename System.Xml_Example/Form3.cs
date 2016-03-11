@@ -16,48 +16,26 @@ namespace System.Xml_Example
 {
     public partial class Form3 : Form
     {
-        string arquivo = @"c:\bk\agenda.xml";
-        XmlDocument xmlDoc = new XmlDocument();
-        XElement xDoc;
-        Contatos contatos;
-
-        // XmlDocument xmlDoc = new XmlDocument();
+        Contatos contatos = null;
+        private int next;
 
         public Form3()
         {
             InitializeComponent();
 
-            if (!File.Exists(arquivo))
-            {
-                XmlNode noderoot = xmlDoc.CreateElement("Contatos");
-                xmlDoc.AppendChild(noderoot);
-                xmlDoc.Save(arquivo);
-            }
-
-            ReadAgenda();
         }
 
-        private void ReadAgenda()
+        private void BindListbox()
         {
-            xDoc = XElement.Load(arquivo);
-            contatos = Serializer.Deserialize<Contatos>(xDoc);
-            listBox1.Items.Clear();
-
-            foreach (Contato c in contatos.Contato) {
-                listBox1.Items.Add("Id       : " + c.Id.ToString());
-                listBox1.Items.Add("Nome     : " + c.Nome);
-                listBox1.Items.Add("Telefone : " + c.Telefone);
-                listBox1.Items.Add("");
-
-                
-            }
-            //XElement result = Serializer.Serialize<Contatos>(contatos);
-
+            contatos = SContatos.Read();
+            listBox1.DataSource = contatos.Contato;
+            listBox1.DisplayMember = "Nome";
+            listBox1.ValueMember = "Id";
         }
-        
+
         private void Form3_Load(object sender, EventArgs e)
         {
-
+            this.BindListbox();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -65,29 +43,57 @@ namespace System.Xml_Example
             Contato c = new Contato();
             c.Id = this.NextId();
             c.Nome = txtNome.Text;
-            c.Telefone = txtTelefone.Text;            
+            c.Telefone = txtTelefone.Text;
 
             contatos.Contato.Add(c);
 
-            XElement xmlReturn = Serializer.Serialize<Contatos>(contatos);
+            SContatos.Write(contatos);
 
-            xmlReturn.Save(arquivo);
+            this.BindListbox();
 
-            ReadAgenda();
         }
 
 
         private int NextId()
         {
-            int next = contatos.Contato.Count + 1;
+            int next;
+            try
+            {
+                next = contatos.Contato[contatos.Contato.Count - 1].Id + 1;
+            }
+            catch
+            {
+                next = 1;
+            }
+
             return next;
 
         }
 
         private void btnDeletar_Click(object sender, EventArgs e)
         {
+            if (listBox1.SelectedIndex > -1)
+            {
+                Contato c = contatos.Contato.Find(p => p.Id == (int)listBox1.SelectedValue);
+                contatos.Contato.Remove(c);
+
+                SContatos.Write(contatos);
+                this.BindListbox();
+            }
+            else
+            {
+                MessageBox.Show("Nenhum Item Selecionado");               
+            }
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
 
         }
 
+        private void listBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
