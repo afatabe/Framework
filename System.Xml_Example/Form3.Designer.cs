@@ -93,9 +93,9 @@
             // 
             // btnDeletar
             // 
-            this.btnDeletar.Location = new System.Drawing.Point(326, 357);
+            this.btnDeletar.Location = new System.Drawing.Point(196, 357);
             this.btnDeletar.Name = "btnDeletar";
-            this.btnDeletar.Size = new System.Drawing.Size(160, 23);
+            this.btnDeletar.Size = new System.Drawing.Size(290, 23);
             this.btnDeletar.TabIndex = 15;
             this.btnDeletar.Text = "Deletar";
             this.btnDeletar.UseVisualStyleBackColor = true;
