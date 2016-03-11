@@ -44,9 +44,12 @@ namespace System.Xml_Example
             listBox1.Items.Clear();
 
             foreach (Contato c in contatos.Contato) {
+                listBox1.Items.Add("Id       : " + c.Id.ToString());
                 listBox1.Items.Add("Nome     : " + c.Nome);
                 listBox1.Items.Add("Telefone : " + c.Telefone);
                 listBox1.Items.Add("");
+
+                
             }
             //XElement result = Serializer.Serialize<Contatos>(contatos);
 
@@ -60,8 +63,9 @@ namespace System.Xml_Example
         private void button1_Click(object sender, EventArgs e)
         {
             Contato c = new Contato();
+            c.Id = this.NextId();
             c.Nome = txtNome.Text;
-            c.Telefone = txtTelefone.Text;
+            c.Telefone = txtTelefone.Text;            
 
             contatos.Contato.Add(c);
 
@@ -70,7 +74,20 @@ namespace System.Xml_Example
             xmlReturn.Save(arquivo);
 
             ReadAgenda();
+        }
+
+
+        private int NextId()
+        {
+            int next = contatos.Contato.Count + 1;
+            return next;
 
         }
+
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
