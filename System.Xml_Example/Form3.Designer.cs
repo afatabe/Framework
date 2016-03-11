@@ -38,10 +38,12 @@
             // 
             // listBox1
             // 
+            this.listBox1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 14;
             this.listBox1.Location = new System.Drawing.Point(206, 18);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(130, 121);
+            this.listBox1.Size = new System.Drawing.Size(222, 228);
             this.listBox1.TabIndex = 13;
             // 
             // label2
@@ -84,12 +86,13 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Salvar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(348, 354);
+            this.ClientSize = new System.Drawing.Size(440, 354);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

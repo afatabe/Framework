@@ -28,20 +28,18 @@ namespace System.Xml_Example
         private void ReadAgenda()
         {
             listBox1.Items.Clear();
-            xmlDoc.Load(arquivo);
-            foreach (XmlNode node in xmlDoc.GetElementsByTagName("Contato"))
-            {
-                listBox1.Items.Add("Nome     : " + node.Attributes["nome"].Value);
-                listBox1.Items.Add("Telefone : " + node.Attributes["telefone"].Value);
-                listBox1.Items.Add("");
-            }
+
+            XElement xDoc = XElement.Load(arquivo);
+            Contatos contatos = Serializer.Deserialize<Contatos>(xDoc);
+
+            XElement result = Serializer.Serialize<Contatos>(contatos);
         }
 
         private void Add(string nome, string telefone)
         {
             XElement xElement = new XElement("Contato");
-            xElement.Add(new XAttribute("nome", nome));
-            xElement.Add(new XAttribute("telefone", telefone));
+            xElement.Add(new XAttribute("Nome", nome));
+            xElement.Add(new XAttribute("Telefone", telefone));
 
             XElement xDoc = XElement.Load(arquivo);
             xDoc.Add(xElement);
@@ -53,6 +51,11 @@ namespace System.Xml_Example
         private void button1_Click(object sender, EventArgs e)
         {
             Add(txtNome.Text, txtTelefone.Text);
+
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
 
         }
     }
