@@ -18,6 +18,7 @@ namespace System.Xml_Example
     {
         Contatos contatos = null;
         private int next;
+        private int Id;
 
         public Form3()
         {
@@ -82,16 +83,57 @@ namespace System.Xml_Example
             }
             else
             {
-                MessageBox.Show("Nenhum Item Selecionado");               
+                MessageBox.Show("Nenhum Item Selecionado");
             }
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-
+          
         }
 
         private void listBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSelecionar_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex > -1)
+            {
+                pnlAlterar.Visible = true;
+                pnlIncluir.Visible = false;               
+
+                Contato c = contatos.Contato.Find(p => p.Id == (int)listBox1.SelectedValue);
+                txtNome.Text = c.Nome;
+                txtTelefone.Text = c.Telefone;
+                Id = c.Id;
+
+
+                
+            }
+        }
+
+        private void btnSAlterar_Click(object sender, EventArgs e)
+        {
+            contatos.Contato.Find(p => p.Id == Id).Nome = txtNome.Text;
+            contatos.Contato.Find(p => p.Id == Id).Telefone = txtTelefone.Text;
+
+            SContatos.Write(contatos);
+            this.BindListbox();
+
+            this.btnCancelar_Click(null, null);
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            pnlAlterar.Visible = false;
+            pnlIncluir.Visible = true;
+            txtNome.Text = txtTelefone.Text = string.Empty;
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
