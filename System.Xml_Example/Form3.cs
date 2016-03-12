@@ -12,6 +12,7 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml;
 
+
 namespace System.Xml_Example
 {
     public partial class Form3 : Form
@@ -41,16 +42,6 @@ namespace System.Xml_Example
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Contato c = new Contato();
-            c.Id = this.NextId();
-            c.Nome = txtNome.Text;
-            c.Telefone = txtTelefone.Text;
-
-            contatos.Contato.Add(c);
-
-            SContatos.Write(contatos);
-
-            this.BindListbox();
 
         }
 
@@ -89,12 +80,12 @@ namespace System.Xml_Example
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-          
+
         }
 
         private void listBox1_Click(object sender, EventArgs e)
         {
-
+            this.btnSelecionar_Click(null, null);
         }
 
         private void btnSelecionar_Click(object sender, EventArgs e)
@@ -102,22 +93,36 @@ namespace System.Xml_Example
             if (listBox1.SelectedIndex > -1)
             {
                 pnlAlterar.Visible = true;
-                pnlIncluir.Visible = false;               
+                pnlIncluir.Visible = false;
 
                 Contato c = contatos.Contato.Find(p => p.Id == (int)listBox1.SelectedValue);
                 txtNome.Text = c.Nome;
-                txtTelefone.Text = c.Telefone;
+                if (c.Telefone.Count > 0)
+                {
+                    
+                    txtTelefoneResidencial.Text = c.Telefone[(int)TiposTelefone.Residencial].Numero;
+                    txtTelefoneComercial.Text = c.Telefone[(int)TiposTelefone.Comercial].Numero;
+                    txtTelefoneCelular.Text = c.Telefone[(int)TiposTelefone.Celular].Numero;
+                }
+
+                txtObs.Text = c.Obs;
                 Id = c.Id;
 
 
-                
+
             }
         }
 
         private void btnSAlterar_Click(object sender, EventArgs e)
         {
-            contatos.Contato.Find(p => p.Id == Id).Nome = txtNome.Text;
-            contatos.Contato.Find(p => p.Id == Id).Telefone = txtTelefone.Text;
+            Contato c = contatos.Contato.Find(p => p.Id == Id);
+            c.Nome = txtNome.Text;
+
+            c.Telefone[(int)TiposTelefone.Residencial].Numero = txtTelefoneResidencial.Text;
+            c.Telefone[(int)TiposTelefone.Comercial].Numero = txtTelefoneComercial.Text;
+            c.Telefone[(int)TiposTelefone.Celular].Numero = txtTelefoneCelular.Text;
+
+            c.Obs = txtObs.Text;
 
             SContatos.Write(contatos);
             this.BindListbox();
@@ -130,11 +135,27 @@ namespace System.Xml_Example
         {
             pnlAlterar.Visible = false;
             pnlIncluir.Visible = true;
-            txtNome.Text = txtTelefone.Text = string.Empty;
+            txtNome.Text = txtObs.Text = txtTelefoneCelular.Text = txtTelefoneComercial.Text = txtTelefoneResidencial.Text = string.Empty;
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
+            Contato c = new Contato();
+            c.Id = this.NextId();
+            c.Nome = txtNome.Text;
+
+            c.Telefone = new List<Telefone>();
+            c.Telefone.Add(new Telefone((int)TiposTelefone.Residencial, txtTelefoneResidencial.Text));
+            c.Telefone.Add(new Telefone((int)TiposTelefone.Comercial, txtTelefoneComercial.Text));
+            c.Telefone.Add(new Telefone((int)TiposTelefone.Celular, txtTelefoneCelular.Text));
+
+            c.Obs = txtObs.Text;
+
+            contatos.Contato.Add(c);
+
+            SContatos.Write(contatos);
+
+            this.BindListbox();
 
         }
     }

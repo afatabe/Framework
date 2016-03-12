@@ -31,7 +31,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtTelefone = new System.Windows.Forms.TextBox();
+            this.txtTelefoneResidencial = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.btnDeletar = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -41,8 +41,16 @@
             this.pnlAlterar = new System.Windows.Forms.Panel();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSAlterar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtObs = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtTelefoneComercial = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtTelefoneCelular = new System.Windows.Forms.TextBox();
             this.pnlIncluir.SuspendLayout();
             this.pnlAlterar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox1
@@ -50,21 +58,20 @@
             this.listBox1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 14;
-            this.listBox1.Location = new System.Drawing.Point(196, 11);
+            this.listBox1.Location = new System.Drawing.Point(295, 11);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(290, 340);
+            this.listBox1.Size = new System.Drawing.Size(281, 340);
             this.listBox1.TabIndex = 13;
             this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 60);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 11;
-            this.label2.Text = "Telefone";
+            this.label2.Text = "Residencial";
             // 
             // label1
             // 
@@ -75,12 +82,12 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Nome";
             // 
-            // txtTelefone
+            // txtTelefoneResidencial
             // 
-            this.txtTelefone.Location = new System.Drawing.Point(12, 76);
-            this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(160, 20);
-            this.txtTelefone.TabIndex = 9;
+            this.txtTelefoneResidencial.Location = new System.Drawing.Point(12, 76);
+            this.txtTelefoneResidencial.Name = "txtTelefoneResidencial";
+            this.txtTelefoneResidencial.Size = new System.Drawing.Size(86, 20);
+            this.txtTelefoneResidencial.TabIndex = 9;
             // 
             // txtNome
             // 
@@ -91,9 +98,9 @@
             // 
             // btnDeletar
             // 
-            this.btnDeletar.Location = new System.Drawing.Point(348, 357);
+            this.btnDeletar.Location = new System.Drawing.Point(447, 357);
             this.btnDeletar.Name = "btnDeletar";
-            this.btnDeletar.Size = new System.Drawing.Size(138, 23);
+            this.btnDeletar.Size = new System.Drawing.Size(129, 23);
             this.btnDeletar.TabIndex = 15;
             this.btnDeletar.Text = "Deletar";
             this.btnDeletar.UseVisualStyleBackColor = true;
@@ -105,9 +112,9 @@
             // 
             // btnSelecionar
             // 
-            this.btnSelecionar.Location = new System.Drawing.Point(196, 357);
+            this.btnSelecionar.Location = new System.Drawing.Point(295, 357);
             this.btnSelecionar.Name = "btnSelecionar";
-            this.btnSelecionar.Size = new System.Drawing.Size(138, 23);
+            this.btnSelecionar.Size = new System.Drawing.Size(129, 23);
             this.btnSelecionar.TabIndex = 16;
             this.btnSelecionar.Text = "Selecionar";
             this.btnSelecionar.UseVisualStyleBackColor = true;
@@ -116,7 +123,7 @@
             // pnlIncluir
             // 
             this.pnlIncluir.Controls.Add(this.button1);
-            this.pnlIncluir.Location = new System.Drawing.Point(12, 102);
+            this.pnlIncluir.Location = new System.Drawing.Point(12, 203);
             this.pnlIncluir.Name = "pnlIncluir";
             this.pnlIncluir.Size = new System.Drawing.Size(136, 36);
             this.pnlIncluir.TabIndex = 18;
@@ -129,14 +136,15 @@
             this.button1.TabIndex = 8;
             this.button1.Text = "Incluir";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // pnlAlterar
             // 
             this.pnlAlterar.Controls.Add(this.btnCancelar);
             this.pnlAlterar.Controls.Add(this.btnSAlterar);
-            this.pnlAlterar.Location = new System.Drawing.Point(12, 102);
+            this.pnlAlterar.Location = new System.Drawing.Point(12, 245);
             this.pnlAlterar.Name = "pnlAlterar";
-            this.pnlAlterar.Size = new System.Drawing.Size(136, 38);
+            this.pnlAlterar.Size = new System.Drawing.Size(136, 36);
             this.pnlAlterar.TabIndex = 19;
             this.pnlAlterar.Visible = false;
             // 
@@ -160,11 +168,76 @@
             this.btnSAlterar.UseVisualStyleBackColor = true;
             this.btnSAlterar.Click += new System.EventHandler(this.btnSAlterar_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 107);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Obs.";
+            // 
+            // txtObs
+            // 
+            this.txtObs.Location = new System.Drawing.Point(12, 123);
+            this.txtObs.Multiline = true;
+            this.txtObs.Name = "txtObs";
+            this.txtObs.Size = new System.Drawing.Size(270, 74);
+            this.txtObs.TabIndex = 20;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(591, 12);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(278, 339);
+            this.dataGridView1.TabIndex = 22;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(101, 60);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 13);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Comercial";
+            // 
+            // txtTelefoneComercial
+            // 
+            this.txtTelefoneComercial.Location = new System.Drawing.Point(104, 76);
+            this.txtTelefoneComercial.Name = "txtTelefoneComercial";
+            this.txtTelefoneComercial.Size = new System.Drawing.Size(86, 20);
+            this.txtTelefoneComercial.TabIndex = 23;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(193, 60);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Celular";
+            // 
+            // txtTelefoneCelular
+            // 
+            this.txtTelefoneCelular.Location = new System.Drawing.Point(196, 76);
+            this.txtTelefoneCelular.Name = "txtTelefoneCelular";
+            this.txtTelefoneCelular.Size = new System.Drawing.Size(86, 20);
+            this.txtTelefoneCelular.TabIndex = 25;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 393);
+            this.ClientSize = new System.Drawing.Size(884, 393);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtTelefoneCelular);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtTelefoneComercial);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtObs);
             this.Controls.Add(this.pnlAlterar);
             this.Controls.Add(this.pnlIncluir);
             this.Controls.Add(this.btnSelecionar);
@@ -172,13 +245,14 @@
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtTelefone);
+            this.Controls.Add(this.txtTelefoneResidencial);
             this.Controls.Add(this.txtNome);
             this.Name = "Form3";
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.Form3_Load);
             this.pnlIncluir.ResumeLayout(false);
             this.pnlAlterar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,7 +263,7 @@
         private Windows.Forms.ListBox listBox1;
         private Windows.Forms.Label label2;
         private Windows.Forms.Label label1;
-        private Windows.Forms.TextBox txtTelefone;
+        private Windows.Forms.TextBox txtTelefoneResidencial;
         private Windows.Forms.TextBox txtNome;
         private Windows.Forms.Button btnDeletar;
         private Windows.Forms.OpenFileDialog openFileDialog1;
@@ -199,5 +273,12 @@
         private Windows.Forms.Panel pnlAlterar;
         private Windows.Forms.Button btnSAlterar;
         private Windows.Forms.Button btnCancelar;
+        private Windows.Forms.Label label3;
+        private Windows.Forms.TextBox txtObs;
+        private Windows.Forms.DataGridView dataGridView1;
+        private Windows.Forms.Label label4;
+        private Windows.Forms.TextBox txtTelefoneComercial;
+        private Windows.Forms.Label label5;
+        private Windows.Forms.TextBox txtTelefoneCelular;
     }
 }

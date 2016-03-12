@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace System.Xml_Example
@@ -15,6 +11,8 @@ namespace System.Xml_Example
         [XmlElement("Nome")]
         public string Nome { get; set; }
         [XmlElement("Telefone")]
-        public string Telefone { get; set; }
+        public List<Telefone> Telefone { get; set; }
+        [XmlElement("Obs")]
+        public string Obs { get; set; }
     }
 }
