@@ -18,26 +18,25 @@ namespace System.Xml_Example
     public partial class Form3 : Form
     {
         Contatos contatos = null;
-        private int next;
-        private int Id;
 
+        private int Id;
         public Form3()
         {
             InitializeComponent();
 
         }
 
-        private void BindListbox()
+        private void BindListbox(List<Contato> lContato)
         {
-            contatos = SContatos.Read();
-            listBox1.DataSource = contatos.Contato;
+            listBox1.DataSource = lContato;
             listBox1.DisplayMember = "Nome";
             listBox1.ValueMember = "Id";
         }
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            this.BindListbox();
+            contatos = SContatos.Read();
+            this.BindListbox(contatos.Contato);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -70,7 +69,7 @@ namespace System.Xml_Example
                 contatos.Contato.Remove(c);
 
                 SContatos.Write(contatos);
-                this.BindListbox();
+                this.BindListbox(SContatos.Read().Contato);
             }
             else
             {
@@ -99,7 +98,7 @@ namespace System.Xml_Example
                 txtNome.Text = c.Nome;
                 if (c.Telefone.Count > 0)
                 {
-                    
+
                     txtTelefoneResidencial.Text = c.Telefone[(int)TiposTelefone.Residencial].Numero;
                     txtTelefoneComercial.Text = c.Telefone[(int)TiposTelefone.Comercial].Numero;
                     txtTelefoneCelular.Text = c.Telefone[(int)TiposTelefone.Celular].Numero;
@@ -125,7 +124,7 @@ namespace System.Xml_Example
             c.Obs = txtObs.Text;
 
             SContatos.Write(contatos);
-            this.BindListbox();
+            this.BindListbox(SContatos.Read().Contato);
 
             this.btnCancelar_Click(null, null);
 
@@ -155,8 +154,34 @@ namespace System.Xml_Example
 
             SContatos.Write(contatos);
 
-            this.BindListbox();
+            this.BindListbox(SContatos.Read().Contato);
 
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Form4 f4 = new Form4();
+            f4.FormClosed += f4_Formclose;
+
+            f4.ShowDialog();
+        }
+
+        void f4_Formclose(object sender, FormClosedEventArgs e)
+        {
+            if (FiltroContatos.Filtro.Count > 0)
+            {
+                this.BindListbox(FiltroContatos.Filtro);
+            }
+            else
+            {
+                MessageBox.Show("Nenhum resultado encontrado");
+            }
+
+        }
+
+        private void btnRemoverFiltro_Click(object sender, EventArgs e)
+        {
+            this.BindListbox(SContatos.Read().Contato);
         }
     }
 }

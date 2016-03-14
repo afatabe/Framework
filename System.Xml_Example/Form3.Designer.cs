@@ -43,14 +43,14 @@
             this.btnSAlterar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtObs = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTelefoneComercial = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtTelefoneCelular = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnRemoverFiltro = new System.Windows.Forms.Button();
             this.pnlIncluir.SuspendLayout();
             this.pnlAlterar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox1
@@ -98,9 +98,9 @@
             // 
             // btnDeletar
             // 
-            this.btnDeletar.Location = new System.Drawing.Point(447, 357);
+            this.btnDeletar.Location = new System.Drawing.Point(506, 357);
             this.btnDeletar.Name = "btnDeletar";
-            this.btnDeletar.Size = new System.Drawing.Size(129, 23);
+            this.btnDeletar.Size = new System.Drawing.Size(70, 23);
             this.btnDeletar.TabIndex = 15;
             this.btnDeletar.Text = "Deletar";
             this.btnDeletar.UseVisualStyleBackColor = true;
@@ -112,9 +112,9 @@
             // 
             // btnSelecionar
             // 
-            this.btnSelecionar.Location = new System.Drawing.Point(295, 357);
+            this.btnSelecionar.Location = new System.Drawing.Point(440, 358);
             this.btnSelecionar.Name = "btnSelecionar";
-            this.btnSelecionar.Size = new System.Drawing.Size(129, 23);
+            this.btnSelecionar.Size = new System.Drawing.Size(60, 23);
             this.btnSelecionar.TabIndex = 16;
             this.btnSelecionar.Text = "Selecionar";
             this.btnSelecionar.UseVisualStyleBackColor = true;
@@ -185,15 +185,6 @@
             this.txtObs.Size = new System.Drawing.Size(270, 74);
             this.txtObs.TabIndex = 20;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(591, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(278, 339);
-            this.dataGridView1.TabIndex = 22;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -226,16 +217,37 @@
             this.txtTelefoneCelular.Size = new System.Drawing.Size(86, 20);
             this.txtTelefoneCelular.TabIndex = 25;
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(12, 318);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 27;
+            this.btnBuscar.Text = "Busca";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // btnRemoverFiltro
+            // 
+            this.btnRemoverFiltro.Location = new System.Drawing.Point(295, 357);
+            this.btnRemoverFiltro.Name = "btnRemoverFiltro";
+            this.btnRemoverFiltro.Size = new System.Drawing.Size(139, 23);
+            this.btnRemoverFiltro.TabIndex = 28;
+            this.btnRemoverFiltro.Text = "Remover Filtro";
+            this.btnRemoverFiltro.UseVisualStyleBackColor = true;
+            this.btnRemoverFiltro.Click += new System.EventHandler(this.btnRemoverFiltro_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 393);
+            this.ClientSize = new System.Drawing.Size(588, 393);
+            this.Controls.Add(this.btnRemoverFiltro);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtTelefoneCelular);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtTelefoneComercial);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtObs);
             this.Controls.Add(this.pnlAlterar);
@@ -252,7 +264,6 @@
             this.Load += new System.EventHandler(this.Form3_Load);
             this.pnlIncluir.ResumeLayout(false);
             this.pnlAlterar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,10 +286,11 @@
         private Windows.Forms.Button btnCancelar;
         private Windows.Forms.Label label3;
         private Windows.Forms.TextBox txtObs;
-        private Windows.Forms.DataGridView dataGridView1;
         private Windows.Forms.Label label4;
         private Windows.Forms.TextBox txtTelefoneComercial;
         private Windows.Forms.Label label5;
         private Windows.Forms.TextBox txtTelefoneCelular;
+        private Windows.Forms.Button btnBuscar;
+        private Windows.Forms.Button btnRemoverFiltro;
     }
 }
